@@ -32,13 +32,18 @@ public class OracleApplication implements CommandLineRunner {
 				.name("Emma's basin")
 				.price(20.00)
 				.build();
-		productRepository.save(product);
+		productRepository.save(product); // should go to mysql
 
 		Order order = Order.builder()
 				.orderId(1)
 				.fromWhom("kev")
 				.orderDate(LocalDate.now())
 				.build();
-
+	orderRepository.save(order); // should go to postgresql
 	}
+	//We need to have multiple EntityManagers/Session Factories,
+	// in hibernate we do call them SessionFactory which are implementations
+	//in jpa we call them as EntityManagers which are interfaces or abstraction
+	//Default, the EntityManager is autoconfigured and uses hibernate behind the scenes
+
 }

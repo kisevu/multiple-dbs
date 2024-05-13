@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
@@ -31,6 +32,8 @@ public class MysqlDatasourceProperties {
 ////        driverManagerDataSource.setDriverClassName(mysqlDataSourceProperties().getDriverClassName());
 ////    return  driverManagerDataSource;
 //    }
+
+    @Primary
     @Bean
     public DataSource mysqlDatasource(){
     return mysqlDataSourceProperties().initializeDataSourceBuilder().build() ; }
